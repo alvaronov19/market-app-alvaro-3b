@@ -1,4 +1,4 @@
-package com.tecdesoftware.market.persistance.entity;
+package com.tecdesoftware.market.persistence.entity;
 
 
 import jakarta.persistence.Column;
@@ -13,6 +13,8 @@ public class CompraProductoPK {
 
     @Column (name= "id_producto")
     private Integer idProducto;
+
+
 
     public Integer getIdCompra() {
         return idCompra;
