@@ -1,5 +1,4 @@
 package com.tecdesoftware.market.persistence;
-
 import com.tecdesoftware.market.domain.Product;
 import com.tecdesoftware.market.domain.repository.ProductRepository;
 import com.tecdesoftware.market.persistence.crud.ProductoCrudRepository;
@@ -10,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
+
 
 //Esta anotación le dice a Spring que este archivo se enlaza con la BD
 @Repository
@@ -61,8 +61,4 @@ public class ProductoRepository implements ProductRepository {
     public void delete(int productId) {
         productoCrudRepository.deleteById(productId);
     }
-
-
-
 }
-

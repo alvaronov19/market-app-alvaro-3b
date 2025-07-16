@@ -5,30 +5,30 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-@Table (name= "clientes")
+@Table(name = "clientes")
 public class Cliente {
 
     @Id
-    // Ejemplo que no lleva GeneratedValue
-
-    private String id;
+    // No se pondrá @GeneratedValue porque será el INE (se pondrá manual)
+    private int id;
     private String nombre;
-    private String apellidos;
+    private String apellido;
+    private Long celular;
     private String direccion;
-    private Long telefono;
 
-    @Column(name= "correo electronico")
+    @Column(name = "correo_electronico")
     private String correoElectronico;
 
-    //Aqui se conecta con la entidad compra
-    @OneToMany (mappedBy = "cliente")
+    @OneToMany(mappedBy = "cliente")
     private List<Compra> compras;
 
-    public String getId() {
+    // Getters y Setters
+
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -40,12 +40,20 @@ public class Cliente {
         this.nombre = nombre;
     }
 
-    public String getApellidos() {
-        return apellidos;
+    public String getApellido() {
+        return apellido;
     }
 
-    public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public Long getCelular() {
+        return celular;
+    }
+
+    public void setCelular(Long celular) {
+        this.celular = celular;
     }
 
     public String getDireccion() {
@@ -54,14 +62,6 @@ public class Cliente {
 
     public void setDireccion(String direccion) {
         this.direccion = direccion;
-    }
-
-    public Long getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(Long telefono) {
-        this.telefono = telefono;
     }
 
     public String getCorreoElectronico() {

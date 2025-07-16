@@ -3,6 +3,7 @@ package com.tecdesoftware.market.persistence.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
+import jakarta.persistence.Id;
 //Esta clase es para crear la llave compuesta
 @Embeddable
 

@@ -1,40 +1,27 @@
 package com.tecdesoftware.market.persistence.entity;
 
+
 import jakarta.persistence.*;
 
 @Entity
-@Table (name= "compras_productos")
+@Table(name="compras_productos")
+
 public class CompraProducto {
 
-    @EmbeddedId //Sale de la otra clase
+    @EmbeddedId
     private CompraProductoPK id;
-
     private Integer cantidad;
     private Double total;
     private Boolean estado;
 
-    @ManyToOne
-    @JoinColumn (name= "id_compra", insertable=false, updatable=false)
-    private Compra compra;
+    //Saber todos los productos que hay en una compra
 
-    @ManyToOne
-    @JoinColumn (name= "id_producto", insertable=false, updatable=false)
-    private Producto producto;
-
-    public CompraProductoPK getId() {
-        return id;
+    public Compra getCompra() {
+        return compra;
     }
 
-    public void setId(CompraProductoPK id) {
-        this.id = id;
-    }
-
-    public Integer getCantidad() {
-        return cantidad;
-    }
-
-    public void setCantidad(Integer cantidad) {
-        this.cantidad = cantidad;
+    public void setCompra(Compra compra) {
+        this.compra = compra;
     }
 
     public Double getTotal() {
@@ -45,6 +32,25 @@ public class CompraProducto {
         this.total = total;
     }
 
+    public Producto getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
+    }
+
+    //Unir la tabla de compra
+    @ManyToOne
+    @MapsId("idCompra")
+    @JoinColumn(name = "id_compra", insertable = false, updatable = false)
+    private Compra compra;
+
+    @ManyToOne
+    @JoinColumn(name = "id_producto", insertable = false, updatable = false)
+    private Producto producto;
+
+
     public Boolean getEstado() {
         return estado;
     }
@@ -52,4 +58,21 @@ public class CompraProducto {
     public void setEstado(Boolean estado) {
         this.estado = estado;
     }
+
+    public Integer getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(Integer cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    public CompraProductoPK getId() {
+        return id;
+    }
+
+    public void setId(CompraProductoPK id) {
+        this.id = id;
+    }
+
 }

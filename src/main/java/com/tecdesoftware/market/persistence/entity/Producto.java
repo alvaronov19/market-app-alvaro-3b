@@ -1,36 +1,49 @@
 package com.tecdesoftware.market.persistence.entity;
 
+
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
-@Table (name= "productos")
+@Table(name="productos")
+
 public class Producto {
 
-    @Id //Llave primaria
-    //Hace el id Auntoincremental
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column (name = "id_productos")
-    private Integer idProducto;
+    @Id // Es la llave primaria
+    //Autogenera ids autoincrementables
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @Column (name="id_producto")
+    private int idProducto;
+
 
     private String nombre;
 
-    @Column (name = "id_categoria")
+    @Column(name="id_categoria")
     private Integer idCategoria;
 
-    @Column (name = "codigo_barras")
+    @Column(name="codigo_barras")
     private String codigoBarras;
 
-    @Column (name = "precio_venta")
+    @Column(name="precio_venta")
     private Double precioVenta;
 
-    @Column (name = "cantidad_stock")
+    @Column(name="cantidad_stock")
     private Integer cantidadStock;
 
     private Boolean estado;
 
     @ManyToOne
-    @JoinColumn (name = "id_categoria", insertable = false, updatable = false)
+    @JoinColumn(name = "id_categorias", insertable = false, updatable = false)
     private Categoria categoria;
+
+    public int getIdProducto() {
+        return idProducto;
+    }
+
+    public void setIdProducto(int idProducto) {
+        this.idProducto = idProducto;
+    }
 
     public String getNombre() {
         return nombre;
@@ -38,14 +51,6 @@ public class Producto {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public Integer getIdProducto() {
-        return idProducto;
-    }
-
-    public void setIdProducto(Integer idProducto) {
-        this.idProducto = idProducto;
     }
 
     public Integer getIdCategoria() {

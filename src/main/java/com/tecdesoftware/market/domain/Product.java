@@ -1,21 +1,20 @@
 package com.tecdesoftware.market.domain;
 
 public class Product {
-
-    private int productId;
+    private int ProductId;
     private String name;
     private int categoryId;
     private double price;
-    private int stock;
+    private int Stock;
     private boolean active;
     private Category category;
 
     public int getProductId() {
-        return productId;
+        return ProductId;
     }
 
     public void setProductId(int productId) {
-        this.productId = productId;
+        ProductId = productId;
     }
 
     public String getName() {
@@ -43,11 +42,11 @@ public class Product {
     }
 
     public int getStock() {
-        return stock;
+        return Stock;
     }
 
     public void setStock(int stock) {
-        this.stock = stock;
+        Stock = stock;
     }
 
     public boolean isActive() {

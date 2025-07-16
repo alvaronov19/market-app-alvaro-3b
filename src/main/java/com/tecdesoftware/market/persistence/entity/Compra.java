@@ -1,54 +1,78 @@
 package com.tecdesoftware.market.persistence.entity;
 
+
+
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
-@Table (name = "compras")
-
+@Table(name="compras")
 public class Compra {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column (name = "id_compra")
+    @Id // Es la llave primaria
+    //Autogenera ids autoincrementables
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @Column (name="id_compra")
     private Integer idCompra;
 
-    @Column (name = "id_cliente")
-    private Integer idCliente;
+    @Column(name="id_cliente")
+    private String idCliente;
+
 
     private LocalDateTime fecha;
 
-    @Column (name = "medio_pago")
+    @Column(name="medio_pago")
     private String medioPago;
 
-    private String comentario;
-    private Boolean estado;
 
-    //Relacion con la entiedad Cliente: Muchas compras a un cliente
+    private String comentario;
+    private String estado;
+
+    //Relacion con cliente : Muchas compras para un cliente
     @ManyToOne
-    //No quiero que se modifique la entidad cliente, solo relacionarlo
-    @JoinColumn (name= "id_cliente", insertable = false, updatable = false)
+    //Insertable/Updateble en false es para que no haya modificaciones
+    @JoinColumn(name = "id_cliente", insertable = false, updatable = false)
     private Cliente cliente;
 
-    @OneToMany (mappedBy = "compra")
-    private List<CompraProducto> productos;
+    public List<CompraProducto> getProductos() {
+        return productos;
+    }
 
+    public void setProductos(List<CompraProducto> productos) {
+        this.productos = productos;
+    }
 
-    public Integer getIdCompra() {
-        return idCompra;
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
     public void setIdCompra(Integer idCompra) {
         this.idCompra = idCompra;
     }
 
-    public Integer getIdCliente() {
+    //Una compra tinee muchos productos
+    @OneToMany(mappedBy = "compra", cascade = CascadeType.ALL)
+    private List<CompraProducto> productos;
+
+    public int getIdCompra() {
+        return idCompra;
+    }
+
+    public void setIdCompra(int idCompra) {
+        this.idCompra = idCompra;
+    }
+
+    public String getIdCliente() {
         return idCliente;
     }
 
-    public void setIdCliente(Integer idCliente) {
+    public void setIdCliente(String idCliente) {
         this.idCliente = idCliente;
     }
 
@@ -76,11 +100,11 @@ public class Compra {
         this.comentario = comentario;
     }
 
-    public Boolean getEstado() {
+    public String getEstado() {
         return estado;
     }
 
-    public void setEstado(Boolean estado) {
+    public void setEstado(String estado) {
         this.estado = estado;
     }
 }
