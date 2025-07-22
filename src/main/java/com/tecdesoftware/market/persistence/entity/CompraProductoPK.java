@@ -1,35 +1,35 @@
 package com.tecdesoftware.market.persistence.entity;
 
 
+//Para unir las 2 llaves y crear una llave compuesta
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.Id;
-//Esta clase es para crear la llave compuesta
-@Embeddable
 
+//Serializable es para que sea autoincrementable
+@Embeddable
 public class CompraProductoPK {
 
-    @Column(name= "id_compra")
-    private Integer idCompra;
+    @Column(name="id_compra")
+    private int idCompra;
 
-    @Column (name= "id_producto")
-    private Integer idProducto;
-
-
-
-    public Integer getIdCompra() {
+    public int getIdCompra() {
         return idCompra;
     }
 
-    public void setIdCompra(Integer idCompra) {
-        this.idCompra = idCompra;
-    }
-
-    public Integer getIdProducto() {
+    public int getIdProducto() {
         return idProducto;
     }
 
-    public void setIdProducto(Integer idProducto) {
+    public void setIdProducto(int idProducto) {
         this.idProducto = idProducto;
     }
+
+    public void setIdCompra(int idCompra) {
+        this.idCompra = idCompra;
+    }
+
+    @Column(name="id_producto")
+    private int idProducto;
 }

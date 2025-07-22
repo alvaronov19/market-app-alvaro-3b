@@ -1,4 +1,4 @@
-package com.tecdesoftware.market.web.controller;
+package com.tecdesoftware.market.web;
 
 import com.tecdesoftware.market.domain.Product;
 import com.tecdesoftware.market.domain.service.ProductService;
